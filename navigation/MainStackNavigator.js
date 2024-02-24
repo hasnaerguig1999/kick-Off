@@ -6,15 +6,41 @@ import { styles } from '../styles/globalStyles'
 import PlayersDetail from '../screens/PlayersDetailScreen';
 import MatchInfoScreen from '../screens/MatchInfoScreen';
 import FavorisScreen from '../screens/FavorisScreen';
-import { View } from 'react-native';
 
 const Stack = createStackNavigator();
 
 export default function MainStackNavigator() {
 
   return (
-   <View>
-    <Text >Main</Text>
-   </View>
+    <Stack.Navigator initialRouteName="Drawer">
+      <Stack.Screen name="Drawer" component={DrawerNavigator} options={{ headerShown: false }} />
+    
+       <Stack.Screen name="PlayersDetail" component={PlayersDetail}
+        options={{
+          headerStyle: {
+            backgroundColor: '#6624A0',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+       <Stack.Screen name="MatchInfoScreen" component={MatchInfoScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: '#6624A0',
+          },
+          headerTintColor: '#fff',
+        }}
+      />  
+      <Stack.Screen name="FavorisScreen" component={FavorisScreen}
+      options={{
+        headerStyle: {
+          backgroundColor: '#6624A0',
+        },
+        headerTintColor: '#fff',
+      }}
+    />
+
+
+    </Stack.Navigator>
   );
 }
