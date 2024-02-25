@@ -6,6 +6,7 @@ const initialState = {
   error: null,
   leagues: [],
   favorites: [],
+  
 };
 
 const matchReducer = (state = initialState, action) => {

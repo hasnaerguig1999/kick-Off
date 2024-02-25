@@ -6,6 +6,7 @@ import { styles } from '../styles/globalStyles'
 import PlayersDetail from '../screens/PlayersDetailScreen';
 import MatchInfoScreen from '../screens/MatchInfoScreen';
 import FavorisScreen from '../screens/FavorisScreen';
+import LeagueInfoScreen from '../screens/LeagueInfoScreen';
 
 const Stack = createStackNavigator();
 
@@ -32,6 +33,14 @@ export default function MainStackNavigator() {
         }}
       />  
       <Stack.Screen name="FavorisScreen" component={FavorisScreen}
+      options={{
+        headerStyle: {
+          backgroundColor: '#6624A0',
+        },
+        headerTintColor: '#fff',
+      }}
+    />
+     <Stack.Screen name="LeagueInfo" component={LeagueInfoScreen}
       options={{
         headerStyle: {
           backgroundColor: '#6624A0',

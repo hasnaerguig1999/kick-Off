@@ -6,6 +6,8 @@ export const ADD_TO_FAVORITES = 'ADD_TO_FAVORITES';
 export const fetchleagues = () => {
   return async (dispatch) => {
    try {
+    
+    // const {data} = await axios.get(`https://api.sofascore.com/api/v1/sport/football/${leagueId}/scheduled-events/2024-02-25`);
      const {data} = await axios.get('https://api.sofascore.com/api/v1/config/top-unique-tournaments/MA/football');
      dispatch({ type: FETCH_LEAGUES, payload: data.uniqueTournaments });
    } catch (error) {
@@ -16,8 +18,8 @@ export const fetchleagues = () => {
 export const fetchMatches = () => {
   return async (dispatch) => {
    try {
-     const {data} = await axios.get('https://api.sofascore.com/api/v1/sport/football/scheduled-events/2024-02-21');
-     dispatch({ type: FETCH_MATCHES, payload: data });
+     const {data} = await axios.get('https://api.sofascore.com/api/v1/sport/football/scheduled-events/2024-02-25');
+     dispatch({ type: FETCH_MATCHES, payload: data.events });
    } catch (error) {
      dispatch({ type: 'FETCH_MATCHES_FAILURE', payload: error.message });
    }

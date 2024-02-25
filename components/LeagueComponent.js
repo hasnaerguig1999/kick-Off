@@ -1,27 +1,33 @@
+// Dans LeagueComponent.js
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchleagues } from '../redux/Match/matchActions';
-import { View, Image, ScrollView, StyleSheet } from 'react-native';
+import { View, Image, ScrollView, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const LeagueComponent = () => {
   const dispatch = useDispatch();
   const leagues = useSelector(state => state.matches.leagues);
+  const navigation = useNavigation();
 
   useEffect(() => {
     dispatch(fetchleagues());
   }, []);
 
+  const handleLeagueSelect = (leagueId) => {
+    // navigation.navigate('LeagueInfo', { leagueId: leagueId });
+  };
+
   return (
     <View style={styles.containere} >
-
-      <ScrollView
-        horizontal={true}
-      >
+      <ScrollView horizontal={true}>
         {leagues && leagues.map(league => (
-          <View key={league.id} style={styles.matchCard}>
-            <Image style={styles.matchImageAffichage}
-              source={{ uri: 'https://api.sofascore.app/api/v1/unique-tournament/' + league.id + '/image' }} />
-          </View>
+          <TouchableOpacity key={league.id} onPress={() => handleLeagueSelect(league.id)}>
+            <View style={styles.matchCard}>
+              <Image style={styles.matchImageAffichage}
+                source={{ uri: 'https://api.sofascore.app/api/v1/unique-tournament/' + league.id + '/image' }} />
+            </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>
@@ -29,7 +35,6 @@ const LeagueComponent = () => {
 };
 
 export default LeagueComponent;
-
 const styles = StyleSheet.create({
   containere: {
 

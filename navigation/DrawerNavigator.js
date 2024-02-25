@@ -1,6 +1,6 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Ionicons, MaterialIcons,AntDesign } from '@expo/vector-icons';
+import { Ionicons, FontAwesome6,AntDesign } from '@expo/vector-icons';
 import Matchs from '../screens/MatchsScreen';
 import PlayersScreen from '../screens/PlayersScreen';
 import FavorisScreen from '../screens/FavorisScreen';
@@ -36,7 +36,7 @@ export default function DrawerNavigator() {
         component={PlayersScreen}
         options={{
           drawerIcon: ({ color, size }) => (
-            <MaterialIcons name="payment" color={'black'} size={size} />
+            <FontAwesome6 name="person" size={24} color="black" />
           ),
         }}
       />
